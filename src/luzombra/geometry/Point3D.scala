@@ -1,6 +1,6 @@
 package luzombra.geometry
 
-import luzombra.geometry.Vec3D.double2Float
+import luzombra.Implicits.double2Float
 
 /** 3D point with common operations
   *

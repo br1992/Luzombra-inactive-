@@ -1,6 +1,5 @@
 package luzombra.geometry
 
-
 /** 3-dimensional vector with common operations
   *
   * @constructor creates a new vector with coordinates x, y, z
@@ -9,7 +8,7 @@ package luzombra.geometry
   * @param z z-coordinate
   * @tparam A type of subclass of Vec3D
   */
-abstract class Vec3D[A <: Vec3D[A]](x: Float, y: Float, z: Float) extends Immutable {
+abstract class Vec3D[A <: Vec3D[A]](val x: Float, val y: Float, val z: Float) extends Immutable {
   type Coor3 = (Double, Double, Double)
 
   /** Returns a new vector whose coordinates are the result of element-wise addition
@@ -58,10 +57,6 @@ abstract class Vec3D[A <: Vec3D[A]](x: Float, y: Float, z: Float) extends Immuta
 
 object Vec3D {
   type Coor3 = (Double, Double, Double)
-
-  /** Implicit conversions between Floats and Doubles */
-  implicit def float2Double(x: Float): Double = x.toDouble
-  implicit def double2Float(x: Double): Float = x.toFloat
 
   /** Returns a new coor3 whose values are computed by applying a function to the
     * respective values of a and b
