@@ -1,7 +1,6 @@
 package luzombra.geometry
 
 import luzombra.geometry.Vec4._
-import luzombra.Implicits._
 
 /** Matrix of size 4 by 4 for geometric transformations
   *
@@ -10,7 +9,7 @@ import luzombra.Implicits._
   * @param col2 third column of matrix
   * @param col3 fourth column of matrix
   */
-class Mat4x4(col0: Vec4F, col1: Vec4F, col2: Vec4F, col3: Vec4F) extends Immutable {
+class Mat4x4(col0: Vec4, col1: Vec4, col2: Vec4, col3: Vec4) extends Immutable {
 
   private val arr = Array(col0._1, col0._2, col0._3, col0._4,
                           col1._1, col1._2, col1._3, col1._4,
@@ -18,12 +17,12 @@ class Mat4x4(col0: Vec4F, col1: Vec4F, col2: Vec4F, col3: Vec4F) extends Immutab
                           col3._1, col3._2, col3._3, col3._4)
 
   /** Returns the float at given row and col indices */
-  def at(row: Int, col: Int): Float = {
+  def at(row: Int, col: Int): Double = {
     arr(row + col * 4)
   }
 
   /** Returns the float at given index */
-  def at(index: Int): Float = {
+  def at(index: Int): Double = {
     arr(index)
   }
 
@@ -31,10 +30,10 @@ class Mat4x4(col0: Vec4F, col1: Vec4F, col2: Vec4F, col3: Vec4F) extends Immutab
   def getArray: Array[Double] = arr.map(_.toDouble)
 
   /** Returns the vector at row r */
-  def row(r: Int): Vec4F = (at(r, 0), at(r, 1), at(r, 2), at(r, 3))
+  def row(r: Int): Vec4 = (at(r, 0), at(r, 1), at(r, 2), at(r, 3))
 
   /** Returns the vector at col c */
-  def col(c: Int): Vec4F = (at(0, c), at(1, c), at(2, c), at(3, c))
+  def col(c: Int): Vec4 = (at(0, c), at(1, c), at(2, c), at(3, c))
 
   /** Returns a new mat4x4 created from the multiplication of this mat4x4 and mat */
   def *(mat: Mat4x4): Mat4x4 =
@@ -52,7 +51,7 @@ class Mat4x4(col0: Vec4F, col1: Vec4F, col2: Vec4F, col3: Vec4F) extends Immutab
     Mat4x4.fromArray(Mat4x4.inv(this.getArray))
   }
 
-  /** Returns the deerminant of this mat4x4 */
+  /** Returns the determinant of this mat4x4 */
   def det: Double = Mat4x4.det(this.getArray)
 
   /** Returns true if all elements of this mat4x4 and mat are equal */
@@ -64,7 +63,7 @@ class Mat4x4(col0: Vec4F, col1: Vec4F, col2: Vec4F, col3: Vec4F) extends Immutab
 
 object Mat4x4 {
 
-  def apply(col0: Vec4F, col1: Vec4F, col2: Vec4F, col3: Vec4F) = new Mat4x4(col0, col1, col2, col3)
+  def apply(col0: Vec4, col1: Vec4, col2: Vec4, col3: Vec4) = new Mat4x4(col0, col1, col2, col3)
 
   /** Returns a new mat4x4 containing the identity matrix */
   def I: Mat4x4 = Mat4x4((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1))
