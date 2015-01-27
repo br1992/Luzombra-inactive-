@@ -1,4 +1,4 @@
-package luzombra.geometry
+package luzombra.geometry.linearAlgebra
 
 import luzombra.Implicits.double2Float
 

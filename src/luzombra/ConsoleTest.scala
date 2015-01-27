@@ -1,6 +1,6 @@
 package luzombra
 
-import luzombra.geometry.Mat4x4
+import luzombra.geometry.linearAlgebra.Mat4x4
 
 /**
  * Created by STUDLER on 1/25/15.

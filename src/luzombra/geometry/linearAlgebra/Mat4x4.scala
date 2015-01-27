@@ -1,6 +1,6 @@
-package luzombra.geometry
+package luzombra.geometry.linearAlgebra
 
-import luzombra.geometry.Vec4._
+import luzombra.geometry.linearAlgebra.Vec4._
 
 /** Matrix of size 4 by 4 for geometric transformations
   *
@@ -27,7 +27,7 @@ class Mat4x4(col0: Vec4, col1: Vec4, col2: Vec4, col3: Vec4) extends Immutable {
   }
 
   /** Returns a copy of arr with doubles */
-  def getArray: Array[Double] = arr.map(_.toDouble)
+  def getArray: Array[Double] = arr.clone()
 
   /** Returns the vector at row r */
   def row(r: Int): Vec4 = (at(r, 0), at(r, 1), at(r, 2), at(r, 3))

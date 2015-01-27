@@ -1,4 +1,4 @@
-package luzombra.geometry
+package luzombra.geometry.linearAlgebra
 
 /** 3-dimensional vector with common operations
   *
