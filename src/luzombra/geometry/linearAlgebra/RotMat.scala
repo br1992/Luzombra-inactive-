@@ -1,8 +1,8 @@
 package luzombra.geometry.linearAlgebra
 
 import scala.math.{cos, sin}
-import RotMat._
-
+import luzombra.geometry.linearAlgebra.RotMat.{Axis, Z_Axis, X_Axis, Y_Axis}
+import luzombra.Implicits.double2Float
 /** Mat4x4 that rotates vectors
   *
   * @param axis axis of rotation (class Axis provided in companion object)
@@ -10,24 +10,24 @@ import RotMat._
   */
 class RotMat(val axis: Axis, val rads: Double) extends Mat4x4(
   axis match {
-    case X_Axis => (1.0, 0.0, 0.0, 0.0)
-    case Y_Axis => (cos(rads), 0.0, -sin(rads), 0.0)
-    case Z_Axis => (cos(rads), sin(rads), 0, 0)
+    case X_Axis => (1.0F, 0.0F, 0.0F, 0.0F)
+    case Y_Axis => (cos(rads), 0.0F, -sin(rads), 0.0F)
+    case Z_Axis => (cos(rads), sin(rads), 0F, 0F)
   },
   axis match {
-    case X_Axis => (0.0, cos(rads), sin(rads), 0.0)
-    case Y_Axis => (0.0, 1.0, 0.0, 0.0)
-    case Z_Axis => (-sin(rads), cos(rads), 0.0, 0.0)
+    case X_Axis => (0.0F, cos(rads), sin(rads), 0.0F)
+    case Y_Axis => (0.0F, 1.0F, 0.0F, 0.0F)
+    case Z_Axis => (-sin(rads), cos(rads), 0.0F, 0.0F)
   },
   axis match {
-    case X_Axis => (0.0, -sin(rads), cos(rads), 0.0)
-    case Y_Axis => (sin(rads), 0.0, cos(rads), 0.0)
-    case Z_Axis => (0.0, 0.0, 1.0, 0.0)
+    case X_Axis => (0.0F, -sin(rads), cos(rads), 0.0F)
+    case Y_Axis => (sin(rads), 0.0F, cos(rads), 0.0F)
+    case Z_Axis => (0.0F, 0.0F, 1.0F, 0.0F)
   },
-  (0.0, 0.0, 0.0, 1.0)) {
+  (0.0F, 0.0F, 0.0F, 1.0F)) {
 
   /** Returns a rotMat that reverses the rotation by this rotMat */
-  override val inv: RotMat = RotMat(axis, -rads)
+  override def inv: RotMat = RotMat(axis, -rads)
 
 }
 

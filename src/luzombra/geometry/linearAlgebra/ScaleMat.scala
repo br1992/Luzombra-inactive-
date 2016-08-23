@@ -6,7 +6,7 @@ package luzombra.geometry.linearAlgebra
   * @param y scaling long y-axis
   * @param z scaling long z-axis
   */
-class ScaleMat(val x: Double, val y: Double, val z: Double) extends Mat4x4(
+class ScaleMat(val x: Float, val y: Float, val z: Float) extends Mat4x4(
   (x, 0, 0, 0), (0, y, 0, 0), (0, 0, z, 0), (0, 0, 0, 1)) {
 
   /** Returns a scaleMat that reverses the scaling by this scaleMat */
@@ -17,6 +17,6 @@ class ScaleMat(val x: Double, val y: Double, val z: Double) extends Mat4x4(
 object ScaleMat {
 
   /** Returns new scaleMat */
-  def apply(x: Double, y: Double, z: Double): ScaleMat = new ScaleMat(x, y, z)
+  def apply(x: Float, y: Float, z: Float): ScaleMat = new ScaleMat(x, y, z)
 
 }
